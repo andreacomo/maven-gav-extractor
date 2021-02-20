@@ -1,5 +1,7 @@
 # Maven GAV Extractor
 
+![Maven GAV Extractor][https://github.com/andreacomo/maven-gav-extractor/actions/workflows/test.yml/badge.svg]
+
 This *GitHub Action* extracts GAV from `pom.xml`, i.e.:
  
  * `groupId`
