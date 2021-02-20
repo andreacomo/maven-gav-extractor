@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Should extract GAV
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - id: extract
+      uses: ./
+      with:
+        pom-location: ${{ github.workspace }}/.github/test-resources/pom.xml
+    - run: |
+        echo "GroupId: ${{ steps.extract.outputs.group-id }}"
+        echo "ArtifactId: ${{ steps.extract.outputs.artifact-id }}"
+        echo "Version: ${{ steps.extract.outputs.version }}"
+      shell: bash
