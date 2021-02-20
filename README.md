@@ -45,7 +45,7 @@ jobs:
         java-version: 11
     - name: Extract GAV
       id: extract
-      uses: actions/maven-gav-extractor@v1
+      uses: andreacomo/maven-gav-extractor@v1
     - name: Log GAV
       run: |
         echo ${{ steps.extract.outputs.group-id }}
