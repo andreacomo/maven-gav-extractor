@@ -1,3 +1,5 @@
+name: Action Test
+
 on: [push]
 
 jobs:
@@ -10,13 +12,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - id: extract
+    - name: Extract GAV
+      id: extract
       uses: ./
       with:
         pom-location: ${{ github.workspace }}/.github/test-resources/pom.xml
-    - name: Echo GAV
+    - name: Assert extracted GAV
       run: |
-        echo "GroupId: ${{ steps.extract.outputs.group-id }}"
-        echo "ArtifactId: ${{ steps.extract.outputs.artifact-id }}"
-        echo "Version: ${{ steps.extract.outputs.version }}"
+        wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
+        . assert.sh
+        assert echo "${{ steps.extract.outputs.group-id }}" "com.codingjam"
+        assert echo "${{ steps.extract.outputs.artifact-id }}" "github-action-poc"
+        assert echo "${{ steps.extract.outputs.version }}" "1.0.0-SNAPSHOT"
       shell: bash
