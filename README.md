@@ -15,13 +15,13 @@ This action expects you to have `maven` available in your workflow environment
 ## Inputs
 
 | Name | Description | Default | Required |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | `pom-location` | Full path to your project `pom.xml` file | `${{ github.workspace }}/pom.xml` | `true` |
 
 ## Outputs
 
 | Name | Description |
-| --- | --- | --- |
+| --- | --- |
 | `group-id` | Group Id of your project |
 | `artifact-id` | Artifact Id of your project |
 | `version` | Version of your project |
