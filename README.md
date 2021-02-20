@@ -1,6 +1,6 @@
-# Maven GAV Extractor *GitHub Action*
+# Maven GAV Extractor
 
-This action extracts GAV from `pom.xml`, i.e.:
+This *GitHub Action* extracts GAV from `pom.xml`, i.e.:
  
  * `groupId`
  * `artifactId`
