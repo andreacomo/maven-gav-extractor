@@ -21,8 +21,8 @@ jobs:
       run: |
         wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
         . assert.sh
-        assert echo "${{ steps.extract.outputs.group-id }}" "com.codingjam"
-        assert echo "${{ steps.extract.outputs.artifact-id }}" "github-action-poc"
-        assert echo "${{ steps.extract.outputs.version }}" "1.0.0-SNAPSHOT"
+        assert "echo ${{ steps.extract.outputs.group-id }}" "com.codingjam"
+        assert "echo ${{ steps.extract.outputs.artifact-id }}" "github-action-poc"
+        assert "echo ${{ steps.extract.outputs.version }}" "1.0.0-SNAPSHOT"
         assert_end tests
       shell: bash
