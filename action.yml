@@ -1,5 +1,5 @@
 name: 'Maven GAV Extractor'
-description: 'Extract Maven grouoId, artifactId and version from pom.xml'
+description: 'Extracts Maven grouoId, artifactId and version from pom.xml'
 branding:
   icon: 'bar-chart-2'  
   color: 'orange'
