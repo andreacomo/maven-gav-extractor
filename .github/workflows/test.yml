@@ -14,7 +14,8 @@ jobs:
       uses: ./
       with:
         pom-location: ${{ github.workspace }}/.github/test-resources/pom.xml
-    - run: |
+    - name: Echo GAV
+      run: |
         echo "GroupId: ${{ steps.extract.outputs.group-id }}"
         echo "ArtifactId: ${{ steps.extract.outputs.artifact-id }}"
         echo "Version: ${{ steps.extract.outputs.version }}"
