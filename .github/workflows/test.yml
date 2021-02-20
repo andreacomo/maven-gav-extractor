@@ -14,7 +14,7 @@ jobs:
         java-version: 11
     - name: Extract GAV
       id: extract
-      uses: actions/maven-gav-extractor@master
+      uses: actions/maven-gav-extractor-github-action@master
       with:
         pom-location: ${{ github.workspace }}/.github/test-resources/pom.xml
     - name: Assert extracted GAV
