@@ -1,12 +1,12 @@
-# Maven GAV (groupId, artifactId, version) Extractor *GitHub Action*
+# Maven GAV Extractor *GitHub Action*
 
-This action extracts from `pom.xml` GAV info, i.e.:
+This action extracts GAV from `pom.xml`, i.e.:
  
  * `groupId`
  * `artifactId`
  * `version`
 
-Why should I need this? For example, to **name** and **tag** a Docker image built upon your artifact
+Why should I need this? For example, to **name** and **tag** a Docker image built upon your artifact or **pass as parameters** to a dispatched workflow.
 
 ## Prerequirements
 
@@ -14,27 +14,21 @@ This action expects you to have `maven` available in your workflow environment
 
 ## Inputs
 
-### `pom-location`
-
-**Required** Full path to your project `pom.xml` file. Default value is POM in your project root: `${{ github.workspace }}/pom.xml`
+| Name | Description | Default | Required |
+| --- | --- | --- |
+| `pom-location` | Full path to your project `pom.xml` file | `${{ github.workspace }}/pom.xml` | `true` |
 
 ## Outputs
 
-### `group-id`
-
-Group Id of your project
-
-### `artifact-id`
-
-Artifact Id of your project
-
-### `version`
-
-Version of your project
+| Name | Description |
+| --- | --- | --- |
+| `group-id` | Group Id of your project |
+| `artifact-id` | Artifact Id of your project |
+| `version` | Version of your project |
 
 ## Example usage
 
-```
+```yml
 name: Sample workflow
 
 on: [push]
