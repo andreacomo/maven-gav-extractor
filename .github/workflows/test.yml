@@ -1,4 +1,4 @@
-name: Action Test
+name: CI
 
 on: [push]
 
