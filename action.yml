@@ -1,0 +1,26 @@
+name: 'Maven GAV Extractor'
+description: 'Extract Maven grouoId, artifactId and version from pom.xml'
+inputs:
+  pom-location:
+    description: 'Full path to pom.xml file'
+    required: true
+    default: ${{ github.workspace }}/pom.xml
+outputs:
+  group-id:
+    description: Group Id
+    value: ${{ steps.evaluate.outputs.group-id }}
+  artifact-id:
+    description: Artifact Id
+    value: ${{ steps.evaluate.outputs.artifact-id }}
+  version:
+    description: Version
+    value: ${{ steps.evaluate.outputs.version }}
+runs:
+  using: 'composite'
+  steps:
+    - id: revaluate
+      run: |
+        echo "::set-output name=group-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.groupId -q -DforceStdout)"
+        echo "::set-output name=artifact-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.artifactId -q -DforceStdout)"
+        echo "::set-output name=version::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout)"
+      shell: bash
