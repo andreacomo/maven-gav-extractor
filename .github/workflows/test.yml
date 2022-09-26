@@ -15,6 +15,11 @@ jobs:
         pom-location: ${{ github.workspace }}/.github/test-resources/pom.xml
     - name: Assert extracted GAV
       run: |
+        echo ${{ steps.extract.outputs.group-id }}
+        echo ${{ steps.extract.outputs.artifact-id }}
+        echo ${{ steps.extract.outputs.version }}
+        echo ${{ steps.extract.outputs.name }}
+        
         wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
         . assert.sh
         assert "echo ${{ steps.extract.outputs.group-id }}" "com.codingjam"
