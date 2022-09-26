@@ -24,5 +24,6 @@ jobs:
         assert "echo ${{ steps.extract.outputs.group-id }}" "com.codingjam"
         assert "echo ${{ steps.extract.outputs.artifact-id }}" "github-action-poc"
         assert "echo ${{ steps.extract.outputs.version }}" "1.0.0-SNAPSHOT"
+        assert "echo ${{ steps.extract.outputs.name }}" ""
         assert_end tests
       shell: bash
