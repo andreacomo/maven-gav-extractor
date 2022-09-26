@@ -7,6 +7,7 @@ This *GitHub Action* extracts GAV from `pom.xml`, i.e.:
  * `groupId`
  * `artifactId`
  * `version`
+ * `name`
 
 Why should I need this? For example, to **name** and **tag** a Docker image built upon your artifact or **pass as parameters** to a dispatched workflow.
 
@@ -27,6 +28,7 @@ This action expects you to have `maven` available in your workflow environment
 | `group-id` | Group Id of your project |
 | `artifact-id` | Artifact Id of your project |
 | `version` | Version of your project |
+| `name` | Name of your project |
 
 ## Example usage
 
@@ -53,5 +55,6 @@ jobs:
         echo ${{ steps.extract.outputs.group-id }}
         echo ${{ steps.extract.outputs.artifact-id }}
         echo ${{ steps.extract.outputs.version }}
+        echo ${{ steps.extract.outputs.name }}
       shell: bash
 ```

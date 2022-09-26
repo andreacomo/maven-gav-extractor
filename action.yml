@@ -18,6 +18,9 @@ outputs:
   version:
     description: Version
     value: ${{ steps.evaluate.outputs.version }}
+  name:
+    description: Name
+    value: ${{ steps.evaluate.outputs.name }}
 runs:
   using: 'composite'
   steps:
@@ -27,4 +30,5 @@ runs:
         echo "::set-output name=group-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.groupId -q -DforceStdout)"
         echo "::set-output name=artifact-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.artifactId -q -DforceStdout)"
         echo "::set-output name=version::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout)"
+        echo "::set-output name=name::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.name -q -DforceStdout)"
       shell: bash
