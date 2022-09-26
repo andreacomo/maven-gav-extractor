@@ -26,9 +26,18 @@ runs:
   steps:
     - id: evaluate
       name: Extract GAV
+      env:
+        EVALUATE: org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate
       run: |
-        echo "::set-output name=group-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.groupId -q -DforceStdout)"
-        echo "::set-output name=artifact-id::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.artifactId -q -DforceStdout)"
-        echo "::set-output name=version::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout)"
-        echo "::set-output name=name::$(mvn -f ${{ inputs.pom-location }} org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.name -q -DforceStdout)"
+        VALUE=$(mvn -f ${{ inputs.pom-location }} $EVALUATE -Dexpression=project.groupId -q -DforceStdout)
+        echo "::set-output name=group-id::$VALUE"
+
+        VALUE=$(mvn -f ${{ inputs.pom-location }} $EVALUATE -Dexpression=project.artifactId -q -DforceStdout)
+        echo "::set-output name=artifact-id::$VALUE"
+        
+        VALUE=$(mvn -f ${{ inputs.pom-location }} $EVALUATE -Dexpression=project.version -q -DforceStdout)
+        echo "::set-output name=version::$VALUE"
+        
+        VALUE=$(mvn -f ${{ inputs.pom-location }} $EVALUATE -Dexpression=project.name -q -DforceStdout)
+        echo "::set-output name=name::$VALUE"
       shell: bash
