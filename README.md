@@ -7,7 +7,7 @@ This *GitHub Action* extracts GAV from `pom.xml`, i.e.:
  * `groupId`
  * `artifactId`
  * `version`
- * `name`
+ * `name` (as Maven default, get the same value of `artifactId` if not specified)
 
 Why should I need this? For example, to **name** and **tag** a Docker image built upon your artifact or **pass as parameters** to a dispatched workflow.
 
@@ -28,7 +28,7 @@ This action expects you to have `maven` available in your workflow environment
 | `group-id` | Group Id of your project |
 | `artifact-id` | Artifact Id of your project |
 | `version` | Version of your project |
-| `name` | Name of your project |
+| `name` | Name of your project, artifact Id if not specified |
 
 ## Example usage
 
