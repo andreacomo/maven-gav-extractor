@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Should extract GAV
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Extract GAV
       id: extract
       uses: ./
