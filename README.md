@@ -11,6 +11,11 @@ This *GitHub Action* extracts GAV from `pom.xml`, i.e.:
 
 Why should I need this? For example, to **name** and **tag** a Docker image built upon your artifact or **pass as parameters** to a dispatched workflow.
 
+## Versioning
+This project follows *Semantic Versioning* according to [GitHub Actions versioning practice](https://github.com/actions/toolkit/blob/main/docs/action-versioning.md)
+
+>Current stable version is `v2`
+
 ## Prerequirements
 
 This action expects you to have `maven` available in your workflow environment
@@ -42,14 +47,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Should extract GAV
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up JDK 11
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v2
       with:
         java-version: 11
+        distribution: temurin
     - name: Extract GAV
       id: extract
-      uses: andreacomo/maven-gav-extractor@v1
+      uses: andreacomo/maven-gav-extractor@v2
     - name: Log GAV
       run: |
         echo ${{ steps.extract.outputs.group-id }}
